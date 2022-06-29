@@ -1,20 +1,12 @@
 <?php
-/*
-|--------------------------------------------------------------------------
-| OWSA-INV V2
-|--------------------------------------------------------------------------
-| Author: Siamon Hasan
-| Project Name: OSWA-INV
-| Version: v2
-| Offcial page: http://oswapp.com/
-| facebook Page: https://www.facebook.com/oswapp
-|
-|
-|
-*/
-  define( 'DB_HOST', 'us-cdbr-east-05.cleardb.net  ' );          // Set database host
-  define( 'DB_USER', 'b0462a22242af7' );             // Set database user
-  define( 'DB_PASS', '6caa0ae8' );             // Set database password
-  define( 'DB_NAME', 'heroku_5d8eb2539693160' );        // Set database name
-
+//Get Heroku ClearDB connection information
+$cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+$cleardb_server = $cleardb_url["us-cdbr-east-05.cleardb.net"];
+$cleardb_username = $cleardb_url["b0462a22242af7"];
+$cleardb_password = $cleardb_url["6caa0ae8"];
+$cleardb_db = substr($cleardb_url["path"],1);
+$active_group = 'default';
+$query_builder = TRUE;
+// Connect to DB
+$conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 ?>
